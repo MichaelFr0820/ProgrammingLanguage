@@ -5,7 +5,11 @@ compiler for Flux (.flux)
 import os
 import sys
 
-#read args
+if len(sys.argv) < 2:
+    print("Usage: python compiler.py <source.flux>")
+    sys.exit(1)
+
+# read args
 program_filepath = sys.argv[1]
 
 print("[CMD] Parsing")
