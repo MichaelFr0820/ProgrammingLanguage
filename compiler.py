@@ -77,7 +77,7 @@ for ip in range(len(program)):
 compile to assembly
 '''
 
-asm_filepath = program_filepath[:-4] + ".asm"
+asm_filepath = program_filepath[:-4] + "asm"
 out = open(asm_filepath, 'w')
 
 out.write(""";--- header --- 
