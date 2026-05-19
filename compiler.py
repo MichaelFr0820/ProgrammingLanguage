@@ -1,5 +1,5 @@
 '''
-compiler for Flux (.flux)
+compiler for Panalo (.flux)
 '''
 
 import os
@@ -11,6 +11,10 @@ if len(sys.argv) < 2:
 
 # read args
 program_filepath = sys.argv[1]
+if not os.path.exists(program_filepath):
+    print(f"Error: source file '{program_filepath}' not found.")
+    print(f"Current working directory: {os.getcwd()}")
+    sys.exit(1)
 
 print("[CMD] Parsing")
 
@@ -69,7 +73,7 @@ for ip in range(len(program)):
         string_literals.append(string_literal)
 
 
-'''s
+'''
 compile to assembly
 '''
 
@@ -135,7 +139,9 @@ while ip< len(program):
         ip += 1
 
         out.write(f"; -- PRINT ---\n")
-        out.write(f"; NOT IMPLEMENTED \n")
+        out.write(f"\tLEA rcx, [rel string_literal_{string_literal}]\n")
+        out.write(f"\tXOR eax, eax\n")
+        out.write(f"\tCALL printf\n")
     elif opcode == "READ":
         out.write(f"; -- READ ---\n")
         out.write(f"; NOT IMPLEMENTED \n")
