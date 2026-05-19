@@ -1,5 +1,5 @@
 '''
-compiler for Flux (.flux).
+compiler for Flux (.flux)
 '''
 
 import os
